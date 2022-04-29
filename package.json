@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start":"npx @babel/node",
     "dev": "babel src --out-dir=./build --copy-files --watch",

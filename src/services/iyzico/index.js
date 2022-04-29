@@ -52,10 +52,10 @@ const createAcardForAUser = () => {
     }
   }).then((result)=> {
     console.log(result);
-    Logs.logFile("2-cards-bir-kullanıcıya-kart-ekle", result);
+    Logs.logFile("2-bir-kullanıcıya-kart-ekle", result);
   }).catch ((err)=> {
     console.log(err);
-    Logs.logFile("2-cards-bir-kullanıcıya-kart-ekle-hata", err);
+    Logs.logFile("2-bir-kullanıcıya-kart-ekle-hata", err);
   })
 }
 
@@ -70,10 +70,10 @@ const readCardsOfAUser = () => {
     cardUserKey: "QBwNni+Kjhz10CqCy2uSEGPl9Kw=",
   }).then((result)=> {
     console.log(result);
-    Logs.logFile("3-cards-bir-kullanıcıya-kart-ekle", result);
+    Logs.logFile("3-bir-kullanıcıya-kart-ekle", result);
   }).catch ((err)=> {
     console.log(err);
-    Logs.logFile("3-cards-bir-kullanıcıya-kart-ekle-hata", err);
+    Logs.logFile("3-bir-kullanıcıya-kart-ekle-hata", err);
   })
 }
 
@@ -89,10 +89,10 @@ const deleteCardOfAUser = () => {
     cardUserKey: "QBwNni+Kjhz10CqCy2uSEGPl9Kw=",
   }).then((result)=> {
     console.log(result);
-    Logs.logFile("4-cards-bir-kullanıcının-kartını-sil", result);
+    Logs.logFile("4-bir-kullanıcının-kartını-sil", result);
   }).catch ((err)=> {
     console.log(err);
-    Logs.logFile("4-cards-bir-kullanıcının-kartını-sil-hata", err);
+    Logs.logFile("4-bir-kullanıcının-kartını-sil-hata", err);
   })
 }
 

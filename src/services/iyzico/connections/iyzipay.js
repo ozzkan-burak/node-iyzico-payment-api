@@ -1,5 +1,5 @@
 import Iyzipay from "iyzipay";
-import config from "../config/config.json";
+import config from "../config/config.js";
 
 const iyzipay = new Iyzipay(config);
 

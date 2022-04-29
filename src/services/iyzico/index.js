@@ -2,6 +2,7 @@ import Iyzipay from "iyzipay";
 import nanoid from "../../utils/nanoid.js";
 //
 import * as Cards from "./methods/cards.js";
+import * as Installments from "./methods/installments.js";
 import * as Logs from "../../utils/logs.js";
 
 
@@ -101,3 +102,22 @@ const deleteCardOfAUser = () => {
 /* ------------------------------------------------- */
 // b) INSTALLMENTS
 /* ------------------------------------------------- */
+
+// Bir kart ve ücretle ilgili gerçekleşebilecek taksitlerin kontrolü.
+
+const checkInstallment = () => {
+  Installments.checkInstallment({
+    locale: Iyzipay.LOCALE.TR,
+    conversationId: nanoid(),
+    binNumber:"552879",
+    price: "1000",
+  }).then((result)=> {
+    console.log(result);
+    Logs.logFile("5-bir-kart-ve-ücret-taksit-kontrolü", result);
+  }).catch ((err)=> {
+    console.log(err);
+    Logs.logFile("5-bir-kart-ve-ücret-taksit-kontrolü-hata", err);
+  })
+}
+
+checkInstallment();

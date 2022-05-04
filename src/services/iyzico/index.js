@@ -4,6 +4,7 @@ import nanoid from "../../utils/nanoid.js";
 import * as Cards from "./methods/cards.js";
 import * as Installments from "./methods/installments.js";
 import * as Payment from "./methods/payment.js";
+import * as ThreedsPayment from "./methods/threeds-payment.js";
 import * as Logs from "../../utils/logs.js";
 
 
@@ -215,7 +216,7 @@ const createPayment = () => {
 
 //createPayment();
 
-// Bir kredikartı ile öeme yap ve kartı kaydet.
+// Bir kredikartı ile ödeme yap ve kartı kaydet.
 
 
 const createPaymentAndSaveCard = () => {
@@ -390,4 +391,94 @@ const createPaymentWithSavedCard = () => {
 //createPaymentWithSavedCard();
 
 
+/* ------------------------------------------------- */
+// d) 3D Secure payment
+/* ------------------------------------------------- */
 
+const initialize3DsecurePayment = () => {
+  ThreedsPayment.initializePayment(
+    {
+      locale: Iyzipay.LOCALE.TR,
+      conversationId: nanoid(),
+      price: "300",
+      paidPrice: "300",
+      currency: Iyzipay.CURRENCY.TRY,
+      installment: "1",
+      basketId: "B67832",
+      paymentChannel:Iyzipay.PAYMENT_CHANNEL.WEB,
+      paymentGroup: Iyzipay.PAYMENT_GROUP.PRODUCT,
+      callbackUrl:"https://localhost/api/payment/3ds/complete",
+      paymentCard: {
+        cardHolderName: "Jode Doe",
+        cardNumber: "5528790000000008",
+        expireMonth: "12",
+        expireYear: "2030",
+        cvc: "123",
+        registerCard: '0',
+      },
+      buyer: {
+        id: "BY789",
+        name: "John",
+        surname: "Doe",
+        gsmNumber: "+905350000000",
+        email: "john@john.com",
+        identityNumber: "74300864791",
+        lastLoginDate: "2015-10-05 12:43:35",
+        registrationDate: "2013-04-21 15:12:09",
+        registrationAddress: "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",
+        ip: "85.34.78.112",
+        city: "Istanbul",
+        country: "Turkey",
+        zipCode: "34732",
+      },
+      shippingAddress: {
+        contactName: "Jane Doe",
+        city: "Istanbul",
+        country: "Turkey",
+        address: "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",
+        zipCode: "34742",
+      },
+      billingAddress: {
+        contactName: "Jane Doe",
+        city: "Istanbul",
+        country: "Turkey",
+        address: "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1",
+        zipCode: "34742",
+      },
+      basketItems: [
+        {
+          id: "BI101",
+          name: "Samsung S20",
+          category1: "Telefonlar",
+          category2: "Android Telefonlar",
+          itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+          price: 90,
+        },
+        {
+          id: "BI102",
+          name: "Iphone X",
+          category1: "Telefonlar",
+          category2: "IOS Telefonlar",
+          itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+          price: 150,
+        },
+        {
+          id: "BI103",
+          name: "Samsung S10",
+          category1: "Telefonlar",
+          category2: "Android Telefonlar",
+          itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
+          price: 60,
+        }
+      ]
+    }
+  ).then((result)=> {
+    console.log(result);
+    Logs.logFile("9-3d-yeni-bir-kart-ile-guvenli-odeme-al", result);
+  }).catch((err)=> {
+    console.log(err);
+    Logs.logFile("9-3d-yeni-bir-kart-ile-guvenli-odeme-al-hata", result);
+  })
+}
+
+initialize3DsecurePayment();

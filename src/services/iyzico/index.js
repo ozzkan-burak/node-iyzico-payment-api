@@ -678,10 +678,10 @@ const initialize3dSecurePaymentsWtihNewCardAndRegistered = () => {
   })
     .then((result) => {
       console.log(result);
-      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-odeme-al", result);
+      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-al", result);
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-odeme-al-hata", result);
+      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-hata", result);
     });
 };

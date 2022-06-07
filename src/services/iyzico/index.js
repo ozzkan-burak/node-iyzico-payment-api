@@ -54,7 +54,7 @@ const createAcardForAUser = () => {
       cardNumber: "5528790000000008",
       expireMonth: "12",
       expireYear: "2030",
-    },
+    }, 
   })
     .then((result) => {
       console.log(result);

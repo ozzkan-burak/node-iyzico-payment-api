@@ -21,7 +21,7 @@ const createUserAndCards = () => {
     externalId: nanoid(),
     card: {
       cardAlias: "Kredi Kartı",
-      cardHolderName: "Jode Doe",
+      cardHolderName: "Jode Doe", 
       cardNumber: "5528790000000008",
       expireMonth: "12",
       expireYear: "2030",

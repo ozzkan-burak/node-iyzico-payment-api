@@ -679,16 +679,16 @@ const initialize3dSecurePaymentsWtihNewCardAndRegistered = () => {
   })
     .then((result) => {
       console.log(result);
-      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-al", result);
+      Logs.logFile("12-kayıtlı-bir-kart-ile-3d-al-yeni-kredi-kartı", result);
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-hata", result);
+      Logs.logFile("12-kayıtlı-bir-kart-ile-3d-hata-yeni-kredi-kartı", result);
     });
 };
 
 /* ------------------------------------------------- */
-// a) CARDS
+// a) Checkout form
 /* ------------------------------------------------- */
 
 const initializeCheckoutForm = () => {
@@ -763,13 +763,32 @@ const initializeCheckoutForm = () => {
   })
     .then((result) => {
       console.log(result);
-      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-al", result);
+      Logs.logFile("13-checkout-form", result);
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-hata", result);
+      Logs.logFile("13-checkout-form-hata", result);
     });
 };
 
+const getFormPayment = () => {
+  Checkouts.getFromPayment({
+    locale: Iyzipay.LOCALE.TR,
+    conservationId: nanoid(),
+    token: 'dVrJR4UZqzmNCnilDUIbuOO77yY=',
+  })
+    .then((result) => {
+      console.log(result);
+      Logs.logFile("14-checkout-form-payments-get-details", result);
+    })
+    .catch((err) => {
+      console.log(err);
+      Logs.logFile("14-checkout-form-payments-get-details-err", result);
+    });
+}
 
  initializeCheckoutForm();
+
+ /* ------------------------------------------------- */
+// e) Checkout form
+/* ------------------------------------------------- */

@@ -490,7 +490,7 @@ const initialize3DsecurePayment = () => {
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("9-3d-yeni-bir-kart-ile-guvenli-odeme-al-hata", result);
+      Logs.logFile("9-3d-yeni-bir-kart-ile-guvenli-odeme-al-hata", err);
     });
 };
 
@@ -511,7 +511,7 @@ const completeThreeDSPayment = () => {
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("10-threeds-payments-odeme-tamamla-hata", result);
+      Logs.logFile("10-threeds-payments-odeme-tamamla-hata", err);
     });
 };
 
@@ -595,7 +595,7 @@ const initialize3DsecurePaymentWithRegisteredCard = () => {
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-odeme-al-hata", result);
+      Logs.logFile("11-kayıtlı-bir-kart-ile-3d-odeme-al-hata", err);
     });
 };
 
@@ -683,7 +683,7 @@ const initialize3dSecurePaymentsWtihNewCardAndRegistered = () => {
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("12-kayıtlı-bir-kart-ile-3d-hata-yeni-kredi-kartı", result);
+      Logs.logFile("12-kayıtlı-bir-kart-ile-3d-hata-yeni-kredi-kartı", err);
     });
 };
 
@@ -767,7 +767,7 @@ const initializeCheckoutForm = () => {
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("13-checkout-form-hata", result);
+      Logs.logFile("13-checkout-form-hata", err);
     });
 };
 
@@ -783,7 +783,7 @@ const getFormPayment = () => {
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("14-checkout-form-payments-get-details-err", result);
+      Logs.logFile("14-checkout-form-payments-get-details-err", err);
     });
 }
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start":"npx @babel/node",
+    "start":"npx @babel/node src/services/iyzico/index.js",
     "dev": "babel src --out-dir=./build --copy-files --watch",
     "build": "babel src --out-dir=./build --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -771,6 +771,10 @@ const initializeCheckoutForm = () => {
     });
 };
 
+//initializeCheckoutForm();
+
+// Tamamlanmış veya tamamlanmamış checkout form ödeme bilgisini gösterir 
+
 const getFormPayment = () => {
   Checkouts.getFromPayment({
     locale: Iyzipay.LOCALE.TR,
@@ -787,7 +791,8 @@ const getFormPayment = () => {
     });
 }
 
- initializeCheckoutForm();
+getFormPayment();
+
 
  /* ------------------------------------------------- */
 // e) Checkout form

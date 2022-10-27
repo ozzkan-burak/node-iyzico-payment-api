@@ -9,12 +9,20 @@ var _fs = _interopRequireDefault(require("fs"));
 
 var _path = _interopRequireDefault(require("path"));
 
+var _url = require("url");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const logFile = (filename, data) => {
-  const filePath = _path.default.join(__dirname, `../logs/${filename}.json`);
+const _filename = (0, _url.fileURLToPath)(import.meta.url);
 
-  const writeDate = JSOn.stringify(data, null, 4);
+const _dirname = _path.default.dirname(_filename);
+
+console.log('directory-name 👉️', _dirname);
+
+const logFile = (filename, data) => {
+  const filePath = _path.default.join(_dirname, `../logs/${filename}.json`);
+
+  const writeDate = JSON.stringify(data, null, 4);
 
   _fs.default.writeFileSync(filePath, writeDate);
 };

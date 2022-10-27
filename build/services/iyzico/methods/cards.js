@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getUserCards = exports.deleteUserCard = exports.createUserCard = void 0;
 
-var _iyzipay = _interopRequireDefault(require("../connections/iyzipay"));
+var _iyzipay = _interopRequireDefault(require("../connections/iyzipay.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const createUserCard = async (userId, card) => {
+const createUserCard = async data => {
   return new Promise((resolve, reject) => {
     _iyzipay.default.card.create(data, (err, result) => {
       if (err) {

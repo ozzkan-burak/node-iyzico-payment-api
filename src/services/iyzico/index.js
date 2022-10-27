@@ -7,6 +7,7 @@ import * as Payment from "./methods/payment.js";
 import * as ThreedsPayment from "./methods/threeds-payment.js";
 import * as Checkouts from "./methods/checkouts";
 import * as Logs from "../../utils/logs.js";
+import * as CancelPayments from './methods/cancel-payments';
 
 /* ------------------------------------------------- */
 // a) CARDS
@@ -791,9 +792,30 @@ const getFormPayment = () => {
     });
 }
 
-getFormPayment();
+//getFormPayment();
 
 
- /* ------------------------------------------------- */
-// e) Checkout form
 /* ------------------------------------------------- */
+// a) CANCEL PAYMENT
+/* ------------------------------------------------- */
+// ÖDEMEYİ İPTAL ETME TESTİ
+
+const cancelPayments = () => {
+  CancelPayments.cancelPayment({
+    locale: Iyzipay.LOCALE.TR,
+    conservationId: nanoid(),
+    paymentId: "17068875",
+    ip: "85.34.78.112",
+  })
+    .then((result) => {
+      console.log(result);
+      Logs.logFile("15-cancel-payment", result);
+    })
+    .catch((err) => {
+      console.log(err);
+      Logs.logFile("15-cancel-payment-err", err);
+    });
+}
+
+cancelPayments();
+

@@ -9,6 +9,7 @@ import * as Checkouts from "./methods/checkouts";
 import * as Logs from "../../utils/logs.js";
 import * as CancelPayments from './methods/cancel-payments';
 
+
 /* ------------------------------------------------- */
 // a) CARDS
 /* ------------------------------------------------- */
@@ -815,7 +816,28 @@ const cancelPayments = () => {
       console.log(err);
       Logs.logFile("15-cancel-payment-err", err);
     });
+};
+
+// cancelPayments();
+
+const cancelPaymentsReason = () => {
+  CancelPayments.cancelPayment({
+    locale: Iyzipay.LOCALE.TR,
+    conservationId: nanoid(),
+    paymentId: "17068875",
+    ip: "85.34.78.112",
+    reason: Iyzipay.REFUND_REASON.BUYER_REQUEST,
+    description: "Kullanıcı isteiği ile iptal edildi",
+  })
+    .then((result) => {
+      console.log(result);
+      Logs.logFile("16-cancel-payment-reason", result);
+    })
+    .catch((err) => {
+      console.log(err);
+      Logs.logFile("15-cancel-payment-reason-err", err);
+    });
 }
 
-cancelPayments();
+// cancelPaymentsReason()
 

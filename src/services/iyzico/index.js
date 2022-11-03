@@ -8,6 +8,7 @@ import * as ThreedsPayment from "./methods/threeds-payment.js";
 import * as Checkouts from "./methods/checkouts";
 import * as Logs from "../../utils/logs.js";
 import * as CancelPayments from './methods/cancel-payments';
+import * as RefundPayments from './methods/refund-payments';
 
 
 /* ------------------------------------------------- */
@@ -835,9 +836,31 @@ const cancelPaymentsReason = () => {
     })
     .catch((err) => {
       console.log(err);
-      Logs.logFile("15-cancel-payment-reason-err", err);
+      Logs.logFile("16-cancel-payment-reason-err", err);
     });
 }
 
 // cancelPaymentsReason()
 
+/* ------------------------------------------------- */
+// g) REFUND PAYMENTS
+/* ------------------------------------------------- */
+
+const refundPayment = () => {
+  RefundPayments.refundPPayments({
+    locale: Iyzipay.LOCALE.TR,
+    conservationId: nanoid(),
+    paymentTransection:,
+    price:"60",
+    currency: Iyzipay.CURRENCY.TRY,
+    ip: "85.34.78.112",
+  })
+    .then((result) => {
+      console.log(result);
+      Logs.logFile("17-cancel-payment-refund", result);
+    })
+    .catch((err) => {
+      console.log(err);
+      Logs.logFile("17-cancel-payment-refund-err", err);
+    });
+}

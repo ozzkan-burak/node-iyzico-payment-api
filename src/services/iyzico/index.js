@@ -863,4 +863,27 @@ const refundPayment = () => {
       console.log(err);
       Logs.logFile("17-cancel-payment-refund-err", err);
     });
+};
+
+// Ödemenin bir kısmını neden ve açıklama ile iade et
+
+const refundPaymentWithReason = () => {
+  RefundPayments.refundPPayments({
+    locale: Iyzipay.LOCALE.TR,
+    conservationId: nanoid(),
+    paymentTransection:,
+    price:"60",
+    currency: Iyzipay.CURRENCY.TRY,
+    ip: "85.34.78.112",
+    reason: Iyzipay.REFUND_REASON.BUYER_REQUEST,
+    description: "Kullanıcı iade istedi",
+  })
+    .then((result) => {
+      console.log(result);
+      Logs.logFile("18-cancel-payment-with-reason", result);
+    })
+    .catch((err) => {
+      console.log(err);
+      Logs.logFile("18-cancel-payment-with-reason-err", err);
+    });
 }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start":"npm start src/services/iyzico/index.js",
+    "start": "npm start src/services/iyzico/index.js",
     "dev": "babel src --out-dir=./build --copy-files --watch",
     "build": "babel src --out-dir=./build --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -29,7 +29,17 @@
     "@babel/register": "^7.17.7"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^6.0.0",
+    "https": "^1.0.0",
     "iyzipay": "^2.0.48",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "mongoose": "^6.7.2",
+    "morgan": "^1.10.0",
     "nanoid": "^3.3.3"
   }
 }

@@ -1,9 +1,13 @@
 "use strict";
 
-var _fs = _interopRequireDefault(require("fs"));
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
+var _config = _interopRequireDefault(require("./config.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_fs.default.writeFileSync("test.txt", "SASDASDegegdf ergewrg wergewrg wergerg  erg", {
-  encoding: "utf-8"
+const envPath = _config.default?.production ? "./env/.prod" : "./env/.dev";
+
+_dotenv.default.config({
+  path: envPath
 });

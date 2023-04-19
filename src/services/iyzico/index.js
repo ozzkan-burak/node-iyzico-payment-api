@@ -850,7 +850,7 @@ const refundPayment = () => {
   RefundPayments.refundPPayments({
     locale: Iyzipay.LOCALE.TR,
     conservationId: nanoid(),
-    paymentTransection:,
+    paymentTransection:"",
     price:"60",
     currency: Iyzipay.CURRENCY.TRY,
     ip: "85.34.78.112",
@@ -871,7 +871,7 @@ const refundPaymentWithReason = () => {
   RefundPayments.refundPPayments({
     locale: Iyzipay.LOCALE.TR,
     conservationId: nanoid(),
-    paymentTransection:,
+    paymentTransection: "",
     price:"60",
     currency: Iyzipay.CURRENCY.TRY,
     ip: "85.34.78.112",

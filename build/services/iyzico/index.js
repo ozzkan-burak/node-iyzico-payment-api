@@ -16,6 +16,10 @@ var Checkouts = _interopRequireWildcard(require("./methods/checkouts"));
 
 var Logs = _interopRequireWildcard(require("../../utils/logs.js"));
 
+var CancelPayments = _interopRequireWildcard(require("./methods/cancel-payments"));
+
+var RefundPayments = _interopRequireWildcard(require("./methods/refund-payments"));
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -734,10 +738,87 @@ const getFormPayment = () => {
     console.log(err);
     Logs.logFile("14-checkout-form-payments-get-details-err", err);
   });
+}; //getFormPayment();
+
+/* ------------------------------------------------- */
+// a) CANCEL PAYMENT
+
+/* ------------------------------------------------- */
+// ÖDEMEYİ İPTAL ETME TESTİ
+
+
+const cancelPayments = () => {
+  CancelPayments.cancelPayment({
+    locale: _iyzipay.default.LOCALE.TR,
+    conservationId: (0, _nanoid.default)(),
+    paymentId: "17068875",
+    ip: "85.34.78.112"
+  }).then(result => {
+    console.log(result);
+    Logs.logFile("15-cancel-payment", result);
+  }).catch(err => {
+    console.log(err);
+    Logs.logFile("15-cancel-payment-err", err);
+  });
+}; // cancelPayments();
+
+
+const cancelPaymentsReason = () => {
+  CancelPayments.cancelPayment({
+    locale: _iyzipay.default.LOCALE.TR,
+    conservationId: (0, _nanoid.default)(),
+    paymentId: "17068875",
+    ip: "85.34.78.112",
+    reason: _iyzipay.default.REFUND_REASON.BUYER_REQUEST,
+    description: "Kullanıcı isteiği ile iptal edildi"
+  }).then(result => {
+    console.log(result);
+    Logs.logFile("16-cancel-payment-reason", result);
+  }).catch(err => {
+    console.log(err);
+    Logs.logFile("16-cancel-payment-reason-err", err);
+  });
+}; // cancelPaymentsReason()
+
+/* ------------------------------------------------- */
+// g) REFUND PAYMENTS
+
+/* ------------------------------------------------- */
+
+
+const refundPayment = () => {
+  RefundPayments.refundPPayments({
+    locale: _iyzipay.default.LOCALE.TR,
+    conservationId: (0, _nanoid.default)(),
+    paymentTransection: "",
+    price: "60",
+    currency: _iyzipay.default.CURRENCY.TRY,
+    ip: "85.34.78.112"
+  }).then(result => {
+    console.log(result);
+    Logs.logFile("17-cancel-payment-refund", result);
+  }).catch(err => {
+    console.log(err);
+    Logs.logFile("17-cancel-payment-refund-err", err);
+  });
+}; // Ödemenin bir kısmını neden ve açıklama ile iade et
+
+
+const refundPaymentWithReason = () => {
+  RefundPayments.refundPPayments({
+    locale: _iyzipay.default.LOCALE.TR,
+    conservationId: (0, _nanoid.default)(),
+    paymentTransection: "",
+    price: "60",
+    currency: _iyzipay.default.CURRENCY.TRY,
+    ip: "85.34.78.112",
+    reason: _iyzipay.default.REFUND_REASON.BUYER_REQUEST,
+    description: "Kullanıcı iade istedi"
+  }).then(result => {
+    console.log(result);
+    Logs.logFile("18-cancel-payment-with-reason", result);
+  }).catch(err => {
+    console.log(err);
+    Logs.logFile("18-cancel-payment-with-reason-err", err);
+  });
 };
-
-getFormPayment();
-/* ------------------------------------------------- */
-// e) Checkout form
-
-/* ------------------------------------------------- */

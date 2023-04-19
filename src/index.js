@@ -1,5 +1,12 @@
-import fs from "fs";
+import dotenv from "dotenv";
+import config from "./config.js";
 
-fs.writeFileSync("test.txt", "SASDASDegegdf ergewrg wergewrg wergerg  erg",{
-  encoding: "utf-8"
+const envPath = config?.production
+  ? "./env/.prod"
+  : "./env/.dev"
+
+dotenv.config({
+  path: envPath
 });
+
+

@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+ 
   "scripts": {
     "start": "npm start src/services/iyzico/index.js",
-    "dev": "babel src --out-dir=./build --copy-files --watch",
+    "dev": "npx nodemon --exec npx @babel/node ./src/index.js dev --watch",
+    "production": "npm run build && node ./build/index.js",
     "build": "babel src --out-dir=./build --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
